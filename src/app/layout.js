@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
             </Link>
             <Navigation />
           </div>
-          <div className='m-10 ml-80'>{children}</div>
+          <div className='w-full m-10 ml-80'>{children}</div>
         </div>
       </body>
     </html>
