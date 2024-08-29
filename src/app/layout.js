@@ -17,8 +17,10 @@ export default function RootLayout({ children }) {
         {/* {children} */}
         {/* <!-- component --> */}
         <div className='flex h-full '>
-          <div class='w-72 flex  fixed top-0 left-0 flex-col bg-white h-full border-r '>
-            <Link href={'/'} class='flex bg-primary text-white font-semibold items-center justify-center h-14 border-b'>
+          <div className='w-72 flex  fixed top-0 left-0 flex-col bg-white h-full border-r '>
+            <Link
+              href={'/'}
+              className='flex bg-primary text-white font-semibold items-center justify-center h-14 border-b'>
               Bangladesh Gold ID-card Builder
             </Link>
             <Navigation />

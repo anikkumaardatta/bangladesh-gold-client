@@ -54,11 +54,11 @@ const Navigation = () => {
   ];
   return (
     <>
-      <div class='overflow-y-auto overflow-x-hidden flex-grow'>
-        <ul class='flex flex-col py-4 space-y-1'>
-          <li class='px-5'>
-            <div class='flex flex-row items-center h-8'>
-              <div class='text-sm font-light tracking-wide text-gray-500'>Menu</div>
+      <div className='overflow-y-auto overflow-x-hidden flex-grow'>
+        <ul className='flex flex-col py-4 space-y-1'>
+          <li className='px-5'>
+            <div className='flex flex-row items-center h-8'>
+              <div className='text-sm font-light tracking-wide text-gray-500'>Menu</div>
             </div>
           </li>
           {/* ================== */}
@@ -66,10 +66,10 @@ const Navigation = () => {
             <li>
               <Link
                 href={menuItem.path}
-                class='relative flex flex-row items-center h-11 focus:outline-none hover:bg-base-100 text-gray-600 hover:text-gray-800 border-l-8 border-transparent hover:border-primary pr-6'>
-                <span class='inline-flex justify-center items-center ml-4 text-xl'>{menuItem.icon}</span>
-                <span class='ml-2 text-sm tracking-wide truncate'>{menuItem.title}</span>
-                {menuItem.badge && <span class={menuItem.badgeStyle}>{menuItem.badge}</span>}
+                className='relative flex flex-row items-center h-11 focus:outline-none hover:bg-base-100 text-gray-600 hover:text-gray-800 border-l-8 border-transparent hover:border-primary pr-6'>
+                <span className='inline-flex justify-center items-center ml-4 text-xl'>{menuItem.icon}</span>
+                <span className='ml-2 text-sm tracking-wide truncate'>{menuItem.title}</span>
+                {menuItem.badge && <span className={menuItem.badgeStyle}>{menuItem.badge}</span>}
               </Link>
             </li>
           ))}

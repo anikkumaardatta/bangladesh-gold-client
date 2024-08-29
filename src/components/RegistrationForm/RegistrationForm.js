@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { FaArrowsRotate } from 'react-icons/fa6';
 import { RiImageAddFill } from 'react-icons/ri';
 
 const RegistrationForm = () => {
@@ -13,62 +14,53 @@ const RegistrationForm = () => {
 
   const onSubmit = (data) => console.log(data);
 
-  const [file, setFile] = useState([]);
-  const [preview, setPreview] = useState();
+  const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
 
-  // console.log(watch('example')); // watch input value by passing the name of it
-
-  //   rendering previews
-
-  useEffect(() => {
-    if (!file) {
-      return;
-    }
-
-    let temp = [];
-
-    temp.push(URL.createObjectURL(file[0]));
-    const objectURLs = temp;
-    setPreview(objectURLs);
-    //free memory
-    for (let i = 0; i < array.length; i++) {
-      return () => {
-        URL.revokeObjectURL(objectURLs[i]);
-      };
-    }
-  }, [file]);
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    // console.log(file);
+    const imageUrl = URL.createObjectURL(file);
+    setImagePreviewUrl(imageUrl);
+  };
 
   return (
     <form className='items-center max-w-[1200px] m-auto' onSubmit={handleSubmit(onSubmit)}>
-      <div class='flex items-center justify-center w-full'></div>
-      <label
-        for='dropzone-file'
-        class='flex flex-col m-auto border-primary items-center justify-center w-[260px] h-[260px] border-2 border-dashed cursor-pointer bg-white hover:bg-slate-50 hover:bg-gray-10'>
-        {/* <div class='flex flex-col items-center justify-center pt-5 pb-6 border w-48 h-48'>
-          <div className='text-gray-500 text-4xl m-2'>
-            <RiImageAddFill />
+      <div className='flex items-center justify-center w-full'></div>
+      <div className='flex flex-col m-auto border-primary items-center justify-center w-[260px] h-[260px] border-2 border-dashed bg-white '>
+        {imagePreviewUrl ? (
+          <div className='w-full max-w-sm bg-slate-300 border-gray-200 shadow'>
+            <div className='flex flex-col items-center p-2'>
+              <img
+                className='w-[200px] h-[200px] border-4 border-secondary bg-white shadow-lg'
+                src={imagePreviewUrl}
+                alt='Selected image'
+              />
+              <div className='flex mt-2'>
+                <label htmlFor='dropzone-file' className='btn btn-secondary btn-sm rounded-none'>
+                  <FaArrowsRotate />
+                  Change Image
+                </label>
+              </div>
+            </div>
           </div>
-          <p class='mb-2 text-sm text-gray-500 '>
-            <span class='font-semibold'>Click to upload</span>
-          </p>
-          <p class='text-xs text-gray-500 '>
-            JPEG, JPG or PNG <br />
-            (MAX. 800x400px)
-          </p>
-        </div> */}
-        <div className='justify-center'>{console.log(preview)}</div>
-        <input
-          id='dropzone-file'
-          type='file'
-          class='hidden'
-          onChange={(e) => {
-            if (e.target.files && e.target.files.length > 0) {
-              setFile(e.target.files);
-            }
-            console.log(file, 'j');
-          }}
-        />
-      </label>
+        ) : (
+          <label
+            htmlFor='dropzone-file'
+            className='flex flex-col items-center justify-center pt-5 pb-6 border w-48 h-48 cursor-pointer hover:shadow-xl'>
+            <div className='text-gray-500 text-4xl m-2'>
+              <RiImageAddFill />
+            </div>
+            <p className='mb-2 text-sm text-gray-500 '>
+              <span className='font-semibold'>Click to upload</span>
+            </p>
+            <p className='text-xs text-gray-500 '>
+              JPEG, JPG or PNG <br />
+              (MAX. 800x400px)
+            </p>
+          </label>
+        )}
+        <input id='dropzone-file' type='file' className='hidden' onChange={handleImageUpload} />
+      </div>
       <div className='grid grid-cols-2 gap-8 items-center'>
         <div className='form-control'>
           <label className='label'>
