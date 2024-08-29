@@ -29,7 +29,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
-// <div className='flex items-center justify-center h-14 border-b text-white'>
-//   <div>Sidebar Navigation By iAmine</div>
-// </div>
