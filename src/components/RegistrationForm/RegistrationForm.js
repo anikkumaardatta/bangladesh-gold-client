@@ -26,7 +26,7 @@ const RegistrationForm = () => {
   return (
     <form className='items-center max-w-[1200px] m-auto' onSubmit={handleSubmit(onSubmit)}>
       <div className='flex items-center justify-center w-full'></div>
-      <div className='flex flex-col m-auto border-primary items-center justify-center w-[260px] h-[260px] border-2 border-dashed bg-white '>
+      <div className='flex flex-col m-auto mb-8 border-primary items-center justify-center w-[260px] h-[260px] border-2 border-dashed bg-white '>
         {imagePreviewUrl ? (
           <div className='w-full max-w-sm bg-slate-300 border-gray-200 shadow'>
             <div className='flex flex-col items-center p-2'>
