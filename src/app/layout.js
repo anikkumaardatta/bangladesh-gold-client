@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google';
+import { Toaster } from 'react-hot-toast';
 import './globals.css';
 import Navigation from '@/components/Navigation/Navigation';
 import Link from 'next/link';
@@ -17,7 +18,7 @@ export default function RootLayout({ children }) {
         {/* {children} */}
         {/* <!-- component --> */}
         <div className='flex h-full '>
-          <div className='w-72 flex  fixed top-0 left-0 flex-col bg-white h-full border-r '>
+          <div className='w-72 flex fixed top-0 left-0 flex-col bg-white h-full border-r '>
             <Link
               href={'/'}
               className='flex bg-primary text-white font-semibold items-center justify-center h-14 border-b'>
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
             </Link>
             <Navigation />
           </div>
+          <Toaster position='bottom-center' />
           <div className='w-full m-10 ml-80'>{children}</div>
         </div>
       </body>

@@ -26,7 +26,7 @@ const Navigation = () => {
     {
       title: 'All customer cards',
       icon: <TbCards />,
-      path: '/',
+      path: '/all-cards',
       badge: '',
       badgeStyle: '',
     },
