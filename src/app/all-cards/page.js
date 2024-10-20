@@ -14,51 +14,58 @@ const page = async () => {
         <div className='overflow-x-auto'>
           <table className='table'>
             {/* head */}
-            <thead>
-              <tr>
-                <th>Profile</th>
-                <th>Customer ID</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {allCustomers.map((customer, index) => (
-                <tr className='bg-white' key={index}>
-                  <td>
-                    <div className='flex items-center gap-3'>
-                      <div className='avatar'>
-                        <div className='mask mask-circle h-12 w-12'>
-                          <img src={apiHostPath + customer.imageUrl} alt='Avatar Tailwind CSS Component' />
+            {allCustomers ? (
+              <>
+                <thead>
+                  <tr>
+                    <th>Profile</th>
+                    <th>Customer ID</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {allCustomers.map((customer, index) => (
+                    <tr className='bg-white' key={index}>
+                      <td>
+                        <div className='flex items-center gap-3'>
+                          <div className='avatar'>
+                            <div className='mask mask-circle h-12 w-12'>
+                              <img src={apiHostPath + customer.imageUrl} alt='Avatar Tailwind CSS Component' />
+                            </div>
+                          </div>
+                          <div>
+                            <div className='font-bold'>{customer.name}</div>
+                            <div className='text-sm opacity-80'>{customer.shopName}</div>
+                          </div>
                         </div>
-                      </div>
-                      <div>
-                        <div className='font-bold'>{customer.name}</div>
-                        <div className='text-sm opacity-80'>{customer.shopName}</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='text-lg font-bold tabular-nums px-4 py-1 border-2 border-primary w-48'>
-                      {customer.customerID}
-                    </div>
-                  </td>
-                  <td>
-                    <button className='btn btn-sm me-4 btn-error text-white'>
-                      <FaUserEdit />
-                      Edit
-                    </button>
-                    <button className='btn btn-sm me-4 btn-success text-white'>
-                      <MdStreetview />
-                      View
-                    </button>
-                    <button className='btn btn-sm btn-info text-white'>
-                      <FaProjectDiagram />
-                      Process
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+                      </td>
+                      <td>
+                        <div className='text-lg font-bold tabular-nums px-4 py-1 border-2 border-primary w-48'>
+                          {customer.customerID}
+                        </div>
+                      </td>
+                      <td>
+                        <button className='btn btn-sm me-4 btn-error text-white'>
+                          <FaUserEdit />
+                          Edit
+                        </button>
+                        <button className='btn btn-sm me-4 btn-success text-white'>
+                          <MdStreetview />
+                          View
+                        </button>
+                        <button className='btn btn-sm btn-info text-white'>
+                          <FaProjectDiagram />
+                          Process
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </>
+            ) : (
+              <h2>No customers</h2>
+            )}
+
             {/* foot */}
             <tfoot>
               <tr>
