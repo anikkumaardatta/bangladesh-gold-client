@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 import { BiAddToQueue } from 'react-icons/bi';
@@ -6,6 +7,7 @@ import { FiEdit } from 'react-icons/fi';
 import { RiPrinterCloudLine } from 'react-icons/ri';
 import { MdPendingActions, MdDomainVerification } from 'react-icons/md';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Navigation = () => {
   const menuList = [
@@ -52,6 +54,10 @@ const Navigation = () => {
       badgeStyle: 'px-2 py-0.5 ml-auto text-xs font-medium tracking-wide rounded-full text-green-500 bg-green-50',
     },
   ];
+
+  const pathName = usePathname();
+  const isActive = (path) => path === pathName;
+
   return (
     <>
       <div className='overflow-y-auto overflow-x-hidden flex-grow'>
@@ -66,7 +72,11 @@ const Navigation = () => {
             <li>
               <Link
                 href={menuItem.path}
-                className='relative flex flex-row items-center h-12 focus:outline-none text-gray-600 pr-6 border-l-8 border-transparent hover:bg-base-100 hover:text-gray-800 hover:border-primary'>
+                className={
+                  isActive(menuItem.path)
+                    ? 'relative flex flex-row items-center h-12 focus:outline-none pr-6 border-l-8  bg-base-100 text-gray-800 border-primary'
+                    : 'relative flex flex-row items-center h-12 focus:outline-none text-gray-600 pr-6 border-l-8 border-transparent hover:bg-slate-100 hover:text-gray-800 hover:border-primary'
+                }>
                 <span className='inline-flex justify-center items-center ml-4 text-2xl'>{menuItem.icon}</span>
                 <span className='ml-2 text-md tracking-wide truncate'>{menuItem.title}</span>
                 {menuItem.badge && <span className={menuItem.badgeStyle}>{menuItem.badge}</span>}

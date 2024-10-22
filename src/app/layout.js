@@ -22,8 +22,8 @@ export default async function RootLayout({ children }) {
       <body className={inter.className}>
         {/* {children} */}
         {/* <!-- component --> */}
-        <div className='flex h-full w-[1200px] m-auto border'>
-          <div className='w-80 flex fixed top-0 flex-col bg-white h-full border-r '>
+        <div className='flex h-full w-[1200px] m-auto'>
+          <div className='w-80 flex fixed top-0 flex-col bg-white h-full'>
             <Link
               href={'/'}
               className='flex bg-primary text-white font-semibold items-center justify-center h-14 border-b'>
