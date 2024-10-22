@@ -22,8 +22,8 @@ export default async function RootLayout({ children }) {
       <body className={inter.className}>
         {/* {children} */}
         {/* <!-- component --> */}
-        <div className='flex h-full '>
-          <div className='w-72 flex fixed top-0 left-0 flex-col bg-white h-full border-r '>
+        <div className='flex h-full w-[1200px] m-auto border'>
+          <div className='w-80 flex fixed top-0 flex-col bg-white h-full border-r '>
             <Link
               href={'/'}
               className='flex bg-primary text-white font-semibold items-center justify-center h-14 border-b'>
@@ -32,7 +32,7 @@ export default async function RootLayout({ children }) {
             <Navigation />
           </div>
           <Toaster position='bottom-center' />
-          <div className='w-full m-10 ml-80'>{children}</div>
+          <div className='w-full mx-10 my-5 ml-[350px]'>{children}</div>
         </div>
       </body>
     </html>

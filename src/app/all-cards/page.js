@@ -10,7 +10,7 @@ const page = async () => {
   return (
     <>
       <div className='all-cards'>
-        <h1 className='text-2xl text-secondary'>All customer cards</h1>
+        <h1 className='text-2xl text-secondary mb-5'>All customer cards</h1>
         <div className='overflow-x-auto'>
           <table className='table'>
             {/* head */}

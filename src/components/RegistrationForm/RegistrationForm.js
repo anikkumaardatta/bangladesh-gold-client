@@ -111,195 +111,213 @@ const RegistrationForm = () => {
 
   const handleImagePreview = (event) => {
     const file = event.target.files[0];
-    const imageUrl = URL.createObjectURL(file);
-    setImagePreviewUrl(imageUrl);
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setImagePreviewUrl(imageUrl);
+    }
   };
   return (
     <div className=''>
-      <button className='text-lg p-4 bg-white border-primary mt-5 -mb-96 sticky top-0'>
+      {/* <button className='text-lg p-4 bg-white border-primary mt-5 -mb-96 sticky top-0'>
         {totalResult.length > 0 ? (
           <div className='text-xl  text-red-500'>{totalResult.length} customer found</div>
         ) : (
           <div className='text-green-500'>No customer found</div>
         )}
-      </button>
-      <form className='items-center max-w-[1200px] m-auto' onSubmit={handleSubmit(handleCustomerCreate)}>
-        <div className='flex items-center justify-center w-full'></div>
-        <div className='flex flex-col m-auto mb-8 border-primary items-center justify-center w-[260px] h-[260px] border-2 border-dashed bg-white '>
-          {imagePreviewUrl ? (
-            <div className='w-full max-w-sm bg-slate-300 border-gray-200 shadow'>
-              <div className='flex flex-col items-center p-2'>
-                <img
-                  className='w-[200px] h-[200px] border-4 border-primary bg-white shadow-lg'
-                  src={imagePreviewUrl}
-                  alt='Preview image'
-                />
-                <label htmlFor='dropzone-file' className='btn btn-secondary btn-sm mt-2 rounded-none'>
-                  <FaArrowsRotate />
-                  Change Image
+      </button> */}
+      <form className='items-center max-w-[768px]' onSubmit={handleSubmit(handleCustomerCreate)}>
+        <div className='flex justify-start'>
+          <div className='me-5'>
+            <label className='label '>
+              {errors.message ? (
+                <span className='label-text text-red-500' role='alert'>
+                  {errors.message?.message}
+                </span>
+              ) : (
+                <span className='label-text'>Customer Image</span>
+              )}
+            </label>
+            <div className='flex flex-col m-auto border-primary items-center justify-center w-[216px] h-[216px] border-2 hover:border-dashed bg-white '>
+              {imagePreviewUrl ? (
+                <div className='w-full max-w-sm border-gray-200'>
+                  <div className='flex flex-col items-center p-2'>
+                    <img
+                      className='w-[200px] h-[200px] border-4 border-primary bg-white'
+                      src={imagePreviewUrl}
+                      alt='Preview image'
+                    />
+                    <label
+                      htmlFor='dropzone-file'
+                      className='btn btn-error text-white text-lg -mt-12 w-[216px] rounded-none opacity-10 hover:opacity-100'>
+                      <FaArrowsRotate />
+                      Change Image
+                    </label>
+                  </div>
+                </div>
+              ) : (
+                <label
+                  htmlFor='dropzone-file'
+                  className='flex flex-col items-center justify-center pt-5 pb-6 w-48 h-48 cursor-pointer hover:shadow-xl'>
+                  <div className='text-gray-500 text-4xl m-2'>
+                    <RiImageAddFill />
+                  </div>
+                  <p className='mb-2 text-sm text-gray-500 '>
+                    <span className='font-semibold'>Click to upload</span>
+                  </p>
+                  <p className='text-xs text-gray-500 '>
+                    JPEG, JPG or PNG <br />
+                    (MAX. 800x400px)
+                  </p>
                 </label>
-              </div>
+              )}
+              <input
+                {...register('customerImage', {
+                  required: 'Customer image is required',
+                })}
+                id='dropzone-file'
+                type='file'
+                accept='image/png, image/jpg, image/jpeg'
+                className='hidden'
+                onChange={handleImagePreview}
+              />
             </div>
-          ) : (
-            <label
-              htmlFor='dropzone-file'
-              className='flex flex-col items-center justify-center pt-5 pb-6 w-48 h-48 cursor-pointer hover:shadow-xl'>
-              <div className='text-gray-500 text-4xl m-2'>
-                <RiImageAddFill />
-              </div>
-              <p className='mb-2 text-sm text-gray-500 '>
-                <span className='font-semibold'>Click to upload</span>
-              </p>
-              <p className='text-xs text-gray-500 '>
-                JPEG, JPG or PNG <br />
-                (MAX. 800x400px)
-              </p>
-            </label>
-          )}
-          <input
-            {...register('customerImage', {
-              required: 'Customer image is required',
-            })}
-            id='dropzone-file'
-            type='file'
-            className='hidden'
-            onChange={handleImagePreview}
-          />
-        </div>
-        <div className='grid grid-cols-2 gap-8 items-center'>
-          <div className='form-control'>
-            <label className='label'>
-              {errors.name ? (
-                <span className='label-text text-red-500' role='alert'>
-                  {errors.name?.message}
-                </span>
-              ) : (
-                <span className='label-text'>Name</span>
-              )}
-            </label>
-            <input
-              {...register('name', {
-                required: 'Customer name is required',
-              })}
-              type='text'
-              placeholder='Full Name'
-              className='input input-bordered focus:input-primary bg-white rounded-none'
-            />
+            <div className='form-control'>
+              <label className='label'>
+                {errors.message ? (
+                  <span className='label-text text-red-500' role='alert'>
+                    {errors.message?.message}
+                  </span>
+                ) : (
+                  <span className='label-text'>Message / Note (Optional)</span>
+                )}
+              </label>
+              <textarea
+                {...register('message', {})}
+                type='text'
+                placeholder='Message (optional)'
+                className='textarea input-bordered focus:input-primary bg-white rounded-none h-[216px]'></textarea>
+            </div>
           </div>
-          <div className='form-control'>
-            <label className='label'>
-              {errors.shopName ? (
-                <span className='label-text text-red-500' role='alert'>
-                  {errors.shopName?.message}
-                </span>
-              ) : (
-                <span className='label-text'>Shop Name</span>
-              )}
-            </label>
-            <input
-              {...register('shopName', {
-                required: `Shop Name is required`,
-              })}
-              type='text'
-              placeholder='Shop Name'
-              className='input input-bordered focus:input-primary bg-white rounded-none'
-            />
+          {/* text area */}
+          <div className='items-center w-full'>
+            <div className='form-control'>
+              <label className='label'>
+                {errors.name ? (
+                  <span className='label-text text-red-500' role='alert'>
+                    {errors.name?.message}
+                  </span>
+                ) : (
+                  <span className='label-text'>Name</span>
+                )}
+              </label>
+              <input
+                {...register('name', {
+                  required: 'Customer name is required',
+                })}
+                type='text'
+                placeholder='Full Name'
+                className='input  input-bordered focus:input-primary bg-white rounded-none'
+              />
+            </div>
+            <div className='form-control'>
+              <label className='label'>
+                {errors.shopName ? (
+                  <span className='label-text text-red-500' role='alert'>
+                    {errors.shopName?.message}
+                  </span>
+                ) : (
+                  <span className='label-text'>Shop Name</span>
+                )}
+              </label>
+              <input
+                {...register('shopName', {
+                  required: `Shop Name is required`,
+                })}
+                type='text'
+                placeholder='Shop Name'
+                className='input input-bordered focus:input-primary bg-white rounded-none'
+              />
+            </div>
+            <div className='form-control'>
+              <label className='label'>
+                {errors.address ? (
+                  <span className='label-text text-red-500' role='alert'>
+                    {errors.address?.message}
+                  </span>
+                ) : (
+                  <span className='label-text'>Address</span>
+                )}
+              </label>
+              <input
+                {...register('address', {
+                  required: `Address is required`,
+                })}
+                type='text'
+                placeholder='Address'
+                className='input input-bordered focus:input-primary bg-white rounded-none'
+              />
+            </div>
+            <div className='form-control'>
+              <label className='label'>
+                {errors.phone ? (
+                  <span className='label-text text-red-500' role='alert'>
+                    {errors.phone?.message}
+                  </span>
+                ) : (
+                  <span className='label-text'>Phone</span>
+                )}
+              </label>
+              <input
+                {...register('phone', {
+                  required: `Contact number is required`,
+                })}
+                onChange={checkIsCustomerExist}
+                type='text'
+                placeholder='Contact number'
+                className='input input-bordered focus:input-primary bg-white rounded-none'
+              />
+            </div>
+            <div className='form-control'>
+              <label className='label'>
+                {errors.customerID ? (
+                  <span className='label-text text-red-500' role='alert'>
+                    {errors.customerID?.message}
+                  </span>
+                ) : (
+                  <span className='label-text'>CustomerID</span>
+                )}
+              </label>
+              <input
+                {...register('customerID', {
+                  required: `Customer id is required`,
+                })}
+                onChange={checkIsCustomerExist}
+                type='text'
+                placeholder='Customer ID'
+                className='input input-bordered focus:input-primary bg-white rounded-none'
+              />
+            </div>
+            <div className='form-control'>
+              <label className='label'>
+                {errors.nid ? (
+                  <span className='label-text text-red-500' role='alert'>
+                    {errors.nid?.message}
+                  </span>
+                ) : (
+                  <span className='label-text'>NID</span>
+                )}
+              </label>
+              <input
+                {...register('nid', {
+                  required: `NID is required`,
+                })}
+                onChange={checkIsCustomerExist}
+                type='text'
+                placeholder='NID (National ID card number)'
+                className='input input-bordered focus:input-primary bg-white rounded-none'
+              />
+            </div>
           </div>
-          <div className='form-control'>
-            <label className='label'>
-              {errors.address ? (
-                <span className='label-text text-red-500' role='alert'>
-                  {errors.address?.message}
-                </span>
-              ) : (
-                <span className='label-text'>Address</span>
-              )}
-            </label>
-            <input
-              {...register('address', {
-                required: `Address is required`,
-              })}
-              type='text'
-              placeholder='Address'
-              className='input input-bordered focus:input-primary bg-white rounded-none'
-            />
-          </div>
-          <div className='form-control'>
-            <label className='label'>
-              {errors.phone ? (
-                <span className='label-text text-red-500' role='alert'>
-                  {errors.phone?.message}
-                </span>
-              ) : (
-                <span className='label-text'>Phone</span>
-              )}
-            </label>
-            <input
-              {...register('phone', {
-                required: `Contact number is required`,
-              })}
-              onChange={checkIsCustomerExist}
-              type='text'
-              placeholder='Contact number'
-              className='input input-bordered focus:input-primary bg-white rounded-none'
-            />
-          </div>
-          <div className='form-control'>
-            <label className='label'>
-              {errors.customerID ? (
-                <span className='label-text text-red-500' role='alert'>
-                  {errors.customerID?.message}
-                </span>
-              ) : (
-                <span className='label-text'>CustomerID</span>
-              )}
-            </label>
-            <input
-              {...register('customerID', {
-                required: `Customer id is required`,
-              })}
-              onChange={checkIsCustomerExist}
-              type='text'
-              placeholder='Customer ID'
-              className='input input-bordered focus:input-primary bg-white rounded-none'
-            />
-          </div>
-          <div className='form-control'>
-            <label className='label'>
-              {errors.nid ? (
-                <span className='label-text text-red-500' role='alert'>
-                  {errors.nid?.message}
-                </span>
-              ) : (
-                <span className='label-text'>NID</span>
-              )}
-            </label>
-            <input
-              {...register('nid', {
-                required: `NID is required`,
-              })}
-              onChange={checkIsCustomerExist}
-              type='text'
-              placeholder='NID (National ID card number)'
-              className='input input-bordered focus:input-primary bg-white rounded-none'
-            />
-          </div>
-        </div>
-        <div className='form-control'>
-          <label className='label mt-6'>
-            {errors.message ? (
-              <span className='label-text text-red-500' role='alert'>
-                {errors.message?.message}
-              </span>
-            ) : (
-              <span className='label-text'>Message / Note (Optional)</span>
-            )}
-          </label>
-          <textarea
-            {...register('message', {})}
-            type='text'
-            placeholder='Message (optional)'
-            className='textarea input-bordered focus:input-primary bg-white rounded-none'></textarea>
         </div>
         <input
           type='submit'

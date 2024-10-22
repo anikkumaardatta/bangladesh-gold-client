@@ -66,9 +66,9 @@ const Navigation = () => {
             <li>
               <Link
                 href={menuItem.path}
-                className='relative flex flex-row items-center h-11 focus:outline-none hover:bg-base-100 text-gray-600 hover:text-gray-800 border-l-8 border-transparent hover:border-primary pr-6'>
-                <span className='inline-flex justify-center items-center ml-4 text-xl'>{menuItem.icon}</span>
-                <span className='ml-2 text-sm tracking-wide truncate'>{menuItem.title}</span>
+                className='relative flex flex-row items-center h-12 focus:outline-none text-gray-600 pr-6 border-l-8 border-transparent hover:bg-base-100 hover:text-gray-800 hover:border-primary'>
+                <span className='inline-flex justify-center items-center ml-4 text-2xl'>{menuItem.icon}</span>
+                <span className='ml-2 text-md tracking-wide truncate'>{menuItem.title}</span>
                 {menuItem.badge && <span className={menuItem.badgeStyle}>{menuItem.badge}</span>}
               </Link>
             </li>
