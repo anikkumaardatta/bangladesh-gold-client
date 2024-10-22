@@ -101,7 +101,7 @@ const RegistrationForm = () => {
             </button>
           </div>
         );
-        router.push('/all-cards');
+        router.push('/admin/all-cards');
       }
     } catch (error) {
       setLoading(false);
@@ -117,7 +117,7 @@ const RegistrationForm = () => {
     }
   };
   return (
-    <div className=''>
+    <div className='w-[780px]'>
       {/* <button className='text-lg p-4 bg-white border-primary mt-5 -mb-96 sticky top-0'>
         {totalResult.length > 0 ? (
           <div className='text-xl  text-red-500'>{totalResult.length} customer found</div>
@@ -125,7 +125,7 @@ const RegistrationForm = () => {
           <div className='text-green-500'>No customer found</div>
         )}
       </button> */}
-      <form className='items-center max-w-[768px]' onSubmit={handleSubmit(handleCustomerCreate)}>
+      <form className='items-center px-10 py-5 rounded-lg border' onSubmit={handleSubmit(handleCustomerCreate)}>
         <div className='flex justify-start'>
           <div className='me-5'>
             <label className='label '>

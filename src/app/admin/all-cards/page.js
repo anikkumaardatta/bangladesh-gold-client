@@ -1,8 +1,8 @@
 // 'use client';
 import { FaProjectDiagram, FaUserEdit } from 'react-icons/fa';
 import { MdStreetview } from 'react-icons/md';
-import getAllCustomers from '../../../lib/getAllCustomers';
-import { apiHostPath } from '../../../secret/secret';
+import getAllCustomers from '../../../../lib/getAllCustomers';
+import { apiHostPath } from '../../../../secret/secret';
 const page = async () => {
   const getCustomers = await getAllCustomers();
   const allCustomers = getCustomers.payload.customers;
@@ -35,12 +35,13 @@ const page = async () => {
                           </div>
                           <div>
                             <div className='font-bold'>{customer.name}</div>
-                            <div className='text-sm opacity-80'>{customer.shopName}</div>
+                            <div className='text-xs opacity-80'>{customer.shopName}</div>
+                            <div className='text-xs opacity-80'>{customer.phone}</div>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <div className='text-lg font-bold tabular-nums px-4 py-1 border-2 border-primary w-48'>
+                        <div className='text-lg font-bold tabular-num px-4 py-1 border-2 border-primary w-40'>
                           {customer.customerID}
                         </div>
                       </td>
