@@ -74,8 +74,8 @@ const Navigation = () => {
                 href={menuItem.path}
                 className={
                   isActive(menuItem.path)
-                    ? 'relative flex flex-row items-center h-12 focus:outline-none pr-6 border-l-8  bg-base-100 text-gray-800 border-primary'
-                    : 'relative flex flex-row items-center h-12 focus:outline-none text-gray-600 pr-6 border-l-8 border-transparent hover:bg-slate-100 hover:text-gray-800 hover:border-primary'
+                    ? 'relative flex flex-row items-center h-12 focus:outline-none pr-6 border-l-8  bg-base-100 text-gray-900 border-primary'
+                    : 'relative flex flex-row items-center transition-all duration-300 hover:translate-x-1 h-12 focus:outline-none text-gray-600 pr-6 border-l-8 border-transparent hover:bg-slate-100 hover:text-gray-700 hover:border-primary'
                 }>
                 <span className='inline-flex justify-center items-center ml-4 text-2xl'>{menuItem.icon}</span>
                 <span className='ml-2 text-md tracking-wide truncate'>{menuItem.title}</span>

@@ -1,0 +1,35 @@
+.w-cm {
+    width: 21cm;
+}
+
+.h-cm {
+    height: 29.7cm;
+}
+
+.pt-cm-1 {
+    padding-top: 1cm;
+}
+
+.mt-cm-18 {
+    margin-top: 1.8cm;
+}
+
+.ms-cm-31 {
+    margin-left: 3.1cm;
+}
+
+.card-w {
+    width: 8.56cm;
+}
+
+.card-h {
+    height: 5.398cm;
+}
+
+.marginBottom {
+    margin-bottom: 38px;
+}
+
+.border-h {
+    border-top: 0.1px solid #00000010;
+}

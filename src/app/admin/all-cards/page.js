@@ -3,15 +3,43 @@ import { FaProjectDiagram, FaUserEdit } from 'react-icons/fa';
 import { MdStreetview } from 'react-icons/md';
 import getAllCustomers from '../../../../lib/getAllCustomers';
 import { apiHostPath } from '../../../../secret/secret';
+import Link from 'next/link';
 const page = async () => {
   const getCustomers = await getAllCustomers();
   const allCustomers = getCustomers.payload.customers;
-  console.log(allCustomers);
   return (
     <>
       <div className='all-cards'>
         <h1 className='text-2xl text-secondary mb-5'>All customer cards</h1>
         <div className='overflow-x-auto'>
+          <div className='flex justify-end'>
+            {/* Search bar */}
+            <div className='join p-1 bg-white rounded-none'>
+              <div className='bg-white'>
+                <div>
+                  <input
+                    className='input input-bordered join-item focus:input-primary bg-white rounded-none'
+                    placeholder='Search'
+                  />
+                </div>
+              </div>
+              <select className='select focus:select-primary select-bordered bg-white join-item'>
+                <option disabled selected>
+                  Filter
+                </option>
+                <option selected>All</option>
+                <option>CustomerID</option>
+                <option>Phone</option>
+                <option>NID</option>
+                <option>Name</option>
+                <option>Shop Name</option>
+                <option>Address</option>
+              </select>
+              <div className='indicator'>
+                <button className='btn btn-primary join-item rounded-none ml-2 text-white'>Search</button>
+              </div>
+            </div>
+          </div>
           <table className='table'>
             {/* head */}
             {allCustomers ? (
@@ -46,10 +74,10 @@ const page = async () => {
                         </div>
                       </td>
                       <td>
-                        <button className='btn btn-sm me-4 btn-error text-white'>
+                        <Link href={`/preview/${customer._id}`} className='btn btn-sm me-4 btn-error text-white'>
                           <FaUserEdit />
                           Edit
-                        </button>
+                        </Link>
                         <button className='btn btn-sm me-4 btn-success text-white'>
                           <MdStreetview />
                           View

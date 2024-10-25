@@ -61,6 +61,7 @@ const RegistrationForm = () => {
       });
       const data = await res.json();
       if (data.success == true) {
+        const objId = data.payload.createdCustomer._id;
         toast.custom(
           <div
             id='toast-success'
@@ -101,7 +102,7 @@ const RegistrationForm = () => {
             </button>
           </div>
         );
-        router.push('/admin/all-cards');
+        router.push(`/preview/${objId}`);
       }
     } catch (error) {
       setLoading(false);
@@ -125,7 +126,7 @@ const RegistrationForm = () => {
           <div className='text-green-500'>No customer found</div>
         )}
       </button> */}
-      <form className='items-center px-10 py-5 rounded-lg border' onSubmit={handleSubmit(handleCustomerCreate)}>
+      <form className='items-center' onSubmit={handleSubmit(handleCustomerCreate)}>
         <div className='flex justify-start'>
           <div className='me-5'>
             <label className='label '>
