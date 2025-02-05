@@ -52,7 +52,7 @@ export default function Home() {
       },
     },
     {
-      title: 'Delivered',
+      title: 'Card Delivered',
       icon: <MdDomainVerification />,
       path: '/admin/delivered',
       styleSheet: {
@@ -70,7 +70,7 @@ export default function Home() {
         {menuList.map((menu) => (
           <Link
             href={menu.path}
-            class='group w-96 h-fit relative cursor-pointer overflow-hidden bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10'>
+            class='group w-96 h-64 relative cursor-pointer overflow-hidden bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10'>
             <span class={menu.styleSheet.parentSpan}></span>
             <div class='relative z-10 mx-auto max-w-md'>
               <span class={menu.styleSheet.childSpan}>

@@ -12,6 +12,7 @@ import { usePathname } from 'next/navigation';
 const Navigation = () => {
   const menuList = [
     {
+      id: 1,
       title: 'Create a new card',
       icon: <BiAddToQueue />,
       path: '/admin/create-card',
@@ -19,6 +20,7 @@ const Navigation = () => {
       badgeStyle: '',
     },
     {
+      id: 2,
       title: 'Edit card',
       icon: <FiEdit />,
       path: '/admin/edit-card',
@@ -26,6 +28,7 @@ const Navigation = () => {
       badgeStyle: '',
     },
     {
+      id: 3,
       title: 'All customer cards',
       icon: <TbCards />,
       path: '/admin/all-cards',
@@ -33,6 +36,7 @@ const Navigation = () => {
       badgeStyle: '',
     },
     {
+      id: 4,
       title: 'Process to printing',
       icon: <RiPrinterCloudLine />,
       path: '/admin/process-printing',
@@ -40,6 +44,7 @@ const Navigation = () => {
       badgeStyle: 'px-2 py-0.5 ml-auto text-xs font-medium tracking-wide rounded-full text-indigo-500 bg-indigo-50',
     },
     {
+      id: 5,
       title: 'Delivery pending',
       icon: <MdPendingActions />,
       path: '/admin/delivery-pending',
@@ -47,6 +52,7 @@ const Navigation = () => {
       badgeStyle: 'px-2 py-0.5 ml-auto text-xs font-medium tracking-wide rounded-full text-red-500 bg-red-50',
     },
     {
+      id: 6,
       title: 'Delivered',
       icon: <MdDomainVerification />,
       path: '/admin/delivered',
@@ -69,7 +75,7 @@ const Navigation = () => {
           </li>
           {/* ================== */}
           {menuList.map((menuItem) => (
-            <li>
+            <li key={menuItem.id}>
               <Link
                 href={menuItem.path}
                 className={

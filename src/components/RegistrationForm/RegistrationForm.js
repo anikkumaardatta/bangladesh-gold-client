@@ -60,6 +60,7 @@ const RegistrationForm = () => {
         body: formData,
       });
       const data = await res.json();
+      console.log('dATA', data);
       if (data.success == true) {
         const objId = data.payload.createdCustomer._id;
         toast.custom(

@@ -22,7 +22,7 @@ const page = async ({ params }) => {
                 <Image src={cardBack} width={600} alt='Card' className='brightness-[1.05]' />
                 <div className='hero-content text-left text-neutral-content'>
                   <div className='absolute h-full text-black '>
-                    <div className='card-w pt-2 px-3 grid grid-cols-3 gap'>
+                    <div className='card-w pt-2 px-3 grid grid-cols-3'>
                       <div className=''>
                         <div className='p-0.5 w-fit bg-white'>
                           <Image src={`http://localhost:5000${imageUrl}`} width={80} height={80} alt='Card' />
@@ -38,7 +38,7 @@ const page = async ({ params }) => {
                           </div>
                         </div>
                       </div>
-                      <div className='relative w-100 my-1 me-1 col-span-2'>
+                      <div className='relative w-100 mb-1 me-1 col-span-2'>
                         <div class='relative overflow-x-auto'>
                           <ul style={{ fontSize: '0.25cm' }} className='font-medium'>
                             <li className=''>
@@ -63,33 +63,12 @@ const page = async ({ params }) => {
                             </li>
                           </ul>
                         </div>
-                        {/* <div className='flex absolute bottom-0'>
-                          <div
-                            style={{ fontSize: '0.2cm' }}
-                            className='text-left mt-1 text-black border-t border-stone-700 bottom-0'>
-                            <p className='font-bold mt-1 mb-1 italic'>
-                              This card is non-transferable, If the card is lost, Kindly notify Bangladesh Gold
-                              authority as soon as possible.
-                            </p>
-                            <p className='font-extrabold uppercase'>IF FOUND PLEASE RETURN THE CARD TO THE OFFICE.</p>
-                          </div>
-                        </div> */}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            {/* ===========================================================================================================Front Side */}
-
-            {/* <div className="card-w ps-10 ">
-            <Image
-              src={cardFront}
-              width={500}
-              alt="Card"
-              className="brightness-[1.05]"
-            />
-          </div> */}
           </div>
         </div>
         <h1>Name:= {name}</h1>
@@ -100,7 +79,6 @@ const page = async ({ params }) => {
         <h1>Phone:= {phone}</h1>
         <h1>Note:= {message}</h1>
       </div>
-      <Image src={cardBack} width={500} height={500} alt='Picture of the author' />
     </>
   );
 };
